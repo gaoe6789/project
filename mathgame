@@ -1,105 +1,136 @@
-#include <iostream>
+#include <cstdio>
 #include <cstdlib>
-#include <time.h>
-
+#include <iostream>
+#include <ctime>
 using namespace std;
 
-int main()
+void addition(double n1,double n2);
+void subtraction(double n1,double n2);
+void multi(double n1,double n2);
+void division(double n1,double n2);
+
+int main(int nNumberofArgs,char* pszArgs[])
 {
-int choice;
-int v1;
-int v2;
-int ans;
-int total;
+    double n1,n2;
+    int choice;
 
+    cout << "Welcome to the math games!" << endl;
 
-srand(time(0)); // initialize random seed to current time
-v1 = rand() % 100; // v1 in the range 0 to 99
-v2 = rand() % 100 + 1; // v2 in the range 1 to 100
+    for(;;)
+    {
+        cout << "Enter a number choice: " << endl;
+        cout << "1 - Addition" << endl;
+        cout << "2 - Subtraction" << endl;
+        cout << "3 - Multiplication" << endl;
+        cout << "4 - Division" << endl;
+        cout << "5 - Exit" << endl;
+        cout << endl << "Choice: ";
+        cin >> choice;
 
-do
+        if(cin.fail())
+        {
+            cout << "Invalid answer, now quitting to prevent crash..." << endl;
+            system("PAUSE");
+            return 0;
+        }
+
+        srand((unsigned)time(0));
+        n1 = rand() % 100 + 1;
+        n2 = rand() % 100 + 1;
+
+        switch(choice)
+        {
+        case 1:
+            addition(n1,n2);
+            break;
+        case 2:
+            subtraction(n1,n2);
+            break;
+        case 3:
+            multi(n1,n2);
+            break;
+        case 4:
+            division(n1,n2);
+            break;
+        case 5:
+            cout << "Thank you for playing please come again!" << endl;
+            system("PAUSE");
+            return 0;
+        default:
+            cout << "Invalid Number!" << endl;
+            system("PAUSE");
+            return 0;
+        }
+    }
+}
+
+void addition(double n1,double n2)
 {
-cout << "-- Menu --" << endl;
-cout << "1: Add" << endl;
-cout << "2: Subtract" << endl;
-cout << "3: Multiply" << endl;
-cout << "4: Divide" << endl;
-cout << "0: Exit" << endl;
-cout << "-- enter your choice: ";
-cin >> choice;
+    double answer;
+    cout << "What is " << n1 << " + " << n2 << "?" << endl;
+    cout << "Answer: ";
+    cin >> answer;
 
-// code for handling the entered choice...
+    if(answer == n1 + n2)
+    {
+        cout << endl << "Correct!" << endl << endl;
+    }
+    else
+    {
+        cout << endl << "Wrong! The right answer was " << n1 + n2 << endl << endl;
+    }
+}
 
-
-
-//switch statements
-
-switch (choice)
+void subtraction(double n1,double n2)
 {
-case 1:
-cout <<"What is"<< v1 <<"+" << v2 <<"?";
-cin >>ans;
-total=v1+v2;
+    double answer;
+    cout << "What is " << n1 << " - " << n2 << "?" << endl;
+    cout << "Answer: ";
+    cin >> answer;
 
-if (ans == v1 + v2) {
-cout << "Correct answer" << endl;
-} 
-else {
-cout << "Wrong answer, please try again" << endl;
+    if(answer == n1 - n2)
+    {
+        cout << endl << "Correct!" << endl << endl;
+    }
+    else
+    {
+        cout << endl << "Wrong! The right answer was " << n1 * n2 << endl << endl;
+    }
 }
-return 1;
 
+void multi(double n1,double n2)
+{
+    double answer;
+    cout << "What is " << n1 << " * " << n2 << "?" << endl;
+    cout << "Answer: ";
+    cin >> answer;
 
-
-case 2:
-cout <<"What is" << v1 <<"-" << v2 <<"?";
-cin >>ans;
-total=v1-v2;
-
-if (ans == v1 - v2) {
-cout << "Correct answer" << endl;
-} 
-else {
-cout << "Wrong answer, please try again" << endl;
+    if(answer == n1 * n2)
+    {
+        cout << endl << "Correct!" << endl << endl;
+    }
+    else
+    {
+        cout << endl << "Wrong! The right answer was " << n1 * n2 << endl << endl;
+    }
 }
-return 1;
 
+void division(double n1,double n2)
+{
+    double answer;
+    double r = n1 / n2;
+    cout << "What is " << n1 << " / " << n2 << "?" << endl;
+    cout << "Remember that your answer must only have 6 numbers in it, round" << endl;
+    cout << "0 does not count as a number, remember to do 0.123 etc." << endl;
+    cout << "Answer: ";
+    cin >> answer;
 
-case 3:
-cout <<"What is" << v1 <<"*" << v2 <<"?";
-cin >>ans;
-total=v1*v2;
-
-if (ans == v1 * v2) {
-cout << "Correct answer" << endl;
-} 
-else {
-cout << "Wrong answer, please try again" << endl;
-}
-return 1;
-
-
-case 4:
-cout <<"What is" << v1 <<"/" << v2 <<"?";
-cin >>ans;
-total=v1/v2;
-
-if (ans == v1 / v2) {
-cout << "Correct answer" << endl;
-} 
-else {
-cout << "Wrong answer, please try again" << endl;
-}
-return 1;
-
-
-
-default:
-cout << "you chose to exit" << endl;
-}
-} while (choice !=0);
-
-
-
-return 0;
+    if(answer == r)
+    {
+        cout << endl << "Correct!" << endl << endl;
+    }
+    else
+    {
+        cout << endl << "Wrong! The right answer was " << r << endl << endl;
+    }
 }
