@@ -32,7 +32,7 @@ while (percentage<usrpercentage)
         printf("\n%d * %d = ",a ,b);
         scanf("%d", &answer);
         if((a * b) == answer){
-            printf("\Yay You are correct!\n");
+            printf("\nYay You are correct!\n");
             correct++;
         }
         else{
