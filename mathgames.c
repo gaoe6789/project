@@ -46,15 +46,15 @@ outFile = fopen("testfile.out", "w");
   }
   {
     fprintf(outFile, "\n\nYour Results:\n\n\n");
-    fprintf(outFile, "Number Incorrect: %d\n", incorrectAnswers);
-    fprintf(outFile, "Number Correct: %d\n", correctAnswers);
-    if(100*correctAnswers/response >= usrpercentage){
+    fprintf(outFile, "Number Incorrect: %d\n", incorrect);
+    fprintf(outFile, "Number Correct: %d\n", correct);
+    if(100*correct/number >= usrpercentage){
         fprintf(outFile, "You Passed!\nGood work!\n\n");
     }
     else{
         fprintf(outFile, "You did not pass!\nYou need more work!\n\n");
     }
-    percentage = 100*correctAnswers/response;
+    percentage = 100*correct/number;
     fprintf(outFile, "%f", percentage);
 
     fclose(outFile);
