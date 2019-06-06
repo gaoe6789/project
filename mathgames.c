@@ -1,6 +1,6 @@
  #include <stdio.h>
-   #include <stdlib.h>
-   int main (void)
+ #include <stdlib.h>
+ int main (void)
 
     {
     int i;
@@ -38,21 +38,28 @@ while (percentage<usrpercentage)
             incorrectAnswers++;
         }
           }
-    
-    printf("\n\nYour Results:\n\n\n");
-    printf("Number Incorrect: %d\n", incorrectAnswers);
-    printf("Number Correct: %d\n", correctAnswers);
+FILE* outFile;
+
+outFile = fopen("testfile.out", "w");
+  if (outFile == NULL) {
+    printf("error - failed to open file for writing\n");
+    return 1;
+  }
+  {
+    fprintf(outFile, "\n\nYour Results:\n\n\n");
+    fprintf(outFile, "Number Incorrect: %d\n", incorrectAnswers);
+    fprintf(outFile, "Number Correct: %d\n", correctAnswers);
     if(100*correctAnswers/response >= usrpercentage){
-        printf("You Passed!\nGood work!\n\n");
+        fprintf(outFile, "You Passed!\nGood work!\n\n");
     }
     else{
-        printf("You did not pass!\nYou need more work!\n\n");
-    }  
+        fprintf(outFile, "You did not pass!\nYou need more work!\n\n");
+    }
     percentage = 100*correctAnswers/response;
-    printf("%f", percentage);
+    fprintf(outFile, "%f", percentage);
 
-}
-
-
+    fclose(outFile);
     return 0;
+}
+}
 }
