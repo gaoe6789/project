@@ -24,16 +24,25 @@ while (percentage<usrpercentage)
     for(i=0; i<number; i++)
     {
         int answer = 0;
+	int correctanswer;
+	int wronganswer;
+	int constant;
         int a = rand() % 12;
         int b = rand() % 12;
         printf("\n%d * %d = ",a ,b);
         scanf("%d", &answer);
-        if((a * b) == answer){
+        if((a * b) == answer)
+{
             printf("\nYay You are correct!\n");
+	printf("\nYou should be proud\n");
+	printf("You are a math genius\n");
             correct++;
         }
-        else{
+        else
+{
             printf("Sorry you were incorrect!\n");
+		printf("\nYou are kind of dumb\n");
+		printf("\nYou need work\n");
             incorrect++;
         }
           }
