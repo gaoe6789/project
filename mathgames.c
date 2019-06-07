@@ -50,9 +50,11 @@ outFile = fopen("testfile.out", "w");
     fprintf(outFile, "Number Correct: %d\n", correct);
     if(100*correct/number >= usrpercentage){
         fprintf(outFile, "You Passed!\nGood work!\n\n");
+	fprintf(outFile, "Play Again!\n");
     }
     else{
         fprintf(outFile, "You did not pass!\nYou need more work!\n\n");
+    	fprintf(outFile, "Play Again!\n");
     }
     percentage = 100*correct/number;
     fprintf(outFile, "%f", percentage);
